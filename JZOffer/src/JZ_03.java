@@ -2,6 +2,12 @@ import java.util.HashSet;
 
 /**
  * @Description: 找出数组中重复的数字。
+ * <p>
+ * 在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，
+ * 但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。
+ * <p>
+ * 来源：力扣（LeetCode）
+ * 链接：https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof
  * @Author: JonesYang
  * @Data: 2021-01-11
  */
@@ -40,13 +46,17 @@ public class JZ_03 {
         return 0;
     }
 
+    /**
+     * 1、遍历数组，如果当前值和它对应的位置的值不相等就需要进行后续操作。
+     * 2、判断要交换的位置是否存在和他相等的值，如果不存在就进行交换，否则直接返回该重复的值。
+     */
     private int method_3() {
         //定义交换时的临时变量
         int temp;
         for (int i = 0; i < arr.length; i++) {
-            // 当这个数字的值和它所对应的位置不相等时,就需要找到对应的数字
+            //1、 当这个数字的值和它所对应的位置不相等时,就需要找到对应的数字
             while (arr[i] != i) {
-                // 数字对应的位置不存在
+                // 2、数字对应的位置上不存在和他相等的值
                 if (arr[i] != arr[arr[i]]) {
                     temp = arr[arr[i]];
                     arr[arr[i]] = arr[i];
