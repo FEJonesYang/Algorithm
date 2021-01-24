@@ -77,9 +77,4 @@ public class JZ_16 {
         }
         return res;
     }
-
-
-    public static void main(String[] args) {
-        System.out.println(JZ_16.myPow_Method_I(2.00000, 2147483647));
-    }
 }
