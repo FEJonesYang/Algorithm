@@ -7,7 +7,7 @@
  * ，要获得最大的盛水容积
  */
 
-class Solution {
+class Solution11 {
     public int maxArea(int[] height) {
         int res = 0; // 记录最大值
         int left = 0;
@@ -32,7 +32,7 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution11 solution = new Solution11();
         System.out.println(solution.maxArea(new int[]{4, 3, 2, 1, 4}));
     }
 }
