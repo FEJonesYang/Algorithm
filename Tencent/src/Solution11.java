@@ -30,9 +30,4 @@ class Solution11 {
 
         return res;
     }
-
-    public static void main(String[] args) {
-        Solution11 solution = new Solution11();
-        System.out.println(solution.maxArea(new int[]{4, 3, 2, 1, 4}));
-    }
 }
