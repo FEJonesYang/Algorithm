@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/Algorithm.iml" filepath="$PROJECT_DIR$/Algorithm.iml" />
       <module fileurl="file://$PROJECT_DIR$/JZOffer/JZOffer.iml" filepath="$PROJECT_DIR$/JZOffer/JZOffer.iml" />
       <module fileurl="file://$PROJECT_DIR$/LeetCodeHot/LeetCodeHot.iml" filepath="$PROJECT_DIR$/LeetCodeHot/LeetCodeHot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LeetCodeHotTop/LeetCodeHotTop.iml" filepath="$PROJECT_DIR$/LeetCodeHotTop/LeetCodeHotTop.iml" />
       <module fileurl="file://$PROJECT_DIR$/Tencent/Tencent.iml" filepath="$PROJECT_DIR$/Tencent/Tencent.iml" />
     </modules>
   </component>
