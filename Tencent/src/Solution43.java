@@ -33,7 +33,7 @@ public class Solution43 {
 
         for (int i = len1; i >= 0; --i) {
             for (int j = len2; j >= 0; --j) {
-                int bitmul = (num1.charAt(i) - '0') * (num2.charAt(i) - '0');
+                int bitmul = (num1.charAt(i) - '0') * (num2.charAt(j) - '0');
                 // 先加低位判断是否有新的进位
                 bitmul += mul[i + j + 1];
                 // 这样我们就可以单独都对每一位进行相乘计算把结果存入相应的index中
