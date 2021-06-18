@@ -53,12 +53,18 @@ public class Solution40 {
             if (target - candidates[i] < 0) {
                 break;
             }
-            // 避免重复计算
+            // 避免重复计算，这里对于避免重复计算的思考如下：
+            // 这个问题和前面一个问题是有区别的，第 39 题的数组里的元素是没有重复的，但是这道题的数组元素是可以有重复的，
+            // 所以前者只需要记录一个当前位置的索引值就可以实现去重。
+
+            // 但是在这里，数组元素是重复的，只有当前搜索位置的索引是不够的，还需要避免在同一层中使用相同的元素，但是不同的层是可以
+            // 使用相同的元素的。 candidates[i - 1] == candidates[i] 用于判断两个数是不是相等的，i > begin 是解决同一层级
+            // 中会出现相同的数字的问题
             if (i > begin && candidates[i - 1] == candidates[i]) {
                 continue;
             }
             path.add(candidates[i]);
-            // 开始下一个轮的递归
+            // 开始下一个轮的递归，i + 1 ，是为了解决数组不可重复使用的规定，真正的重点在于 去重
             dfs(candidates, path, len, target - candidates[i], i + 1);
             // 回溯
             path.removeLast();

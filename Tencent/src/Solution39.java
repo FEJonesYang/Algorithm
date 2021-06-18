@@ -28,7 +28,6 @@ public class Solution39 {
         if (len == 0) {
             return res;
         }
-        List<Integer> temp = new ArrayList<>();
         // 排序是剪枝的前提
         Arrays.sort(candidates);
 
@@ -59,7 +58,9 @@ public class Solution39 {
                 break;
             }
             path.add(candidates[i]);
-            // 注意：由于每一个元素可以重复使用，下一轮搜索的起点依然是 i，这里非常容易弄错
+            // 注意：由于每一个元素可以重复使用，下一轮搜索的起点依然是 i，这里非常容易弄错，
+            //从每一层的第 2 个结点开始，都不能再搜索产生同一层结点已经使用过的 candidate 里的元素（去重），所以这里引入的了begin，
+            // 记录开始进行搜索的位置，由于 begin 是递增的，所以每一层中不会使用前面使用过的元素
             dfs(candidates, i, len, target - candidates[i], path, res);
             path.removeLast();
         }
