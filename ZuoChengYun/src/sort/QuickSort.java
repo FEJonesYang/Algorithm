@@ -3,38 +3,71 @@ package sort;
 /**
  * @Author: JonesYang
  * @Data: 2021-06-16
- * @Description: 快速排序算法
+ * @Description: 快速排序算法，随机选择基准元素
  * <p>
  * 选择基准元素 + 递归
  */
 public class QuickSort {
-    private void quickSort(int[] arr, int left, int right) {
-        // 递归结束条件
-        if (left > right) {
+    private void quickSort(int[] arr) {
+        if (arr == null || arr.length == 0) {
             return;
         }
-        // 递归在当前的层需要的处理
-        // 1、选择基准元素
-        int pivot = arr[left];
-        // 2、定义左右边界
-        int i = left, j = right;
-        // 开始对左右的元素进行排序
-        while (i <= j) {
-            // 在左边找到大于基准元素的数
-            while (i < j && arr[i] < arr[pivot]) i++;
-            // 在右边找到小于基准元素的数
-            while (i < j && arr[j] > arr[pivot]) j--;
-            // 找到之后进行交换
-            int temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
-        }
-        // 还需要交换基准元素
-        arr[left] = arr[i];
-        arr[i] = pivot;
+        int left = 0, right = arr.length - 1;
+        process(arr, left, right);
+    }
 
-        // 开启下一轮的递归
-        quickSort(arr, left, i - 1);
-        quickSort(arr, i + 1, right);
+    private void process(int[] arr, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+        // 在 left .. right 的区间内找一个随机数
+        int pivot = (int) (Math.random() * (right - left + 1));
+        // 先把随机选择的元素与数组最右边的数进行交换
+        swap(arr, left + pivot, right);
+        // 获取相等的区域
+        int[] area = equalArea(arr, left, right);
+        // 开始下一轮的递归
+        process(arr, left, area[0] - 1);
+        process(arr, area[1] + 1, right);
+    }
+
+    /**
+     * 交换数组中的两个元素
+     *
+     * @param arr
+     * @param i
+     * @param j
+     */
+    private void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    private int[] equalArea(int[] arr, int left, int right) {
+        if (left > right) {
+            return new int[]{-1, -1};
+        }
+        if (left == right) {
+            return new int[]{left, right};
+        }
+        // 记录小于基准元素的边界
+        int less = left - 1;
+        // 记录大于基准元素的边界
+        int more = right;
+        // 用于在这个过程中迭代整个数组
+        int index = left;
+        while (index < more) {
+            // 在相等的情况下，左边界不会发生移动
+            if (arr[index] == arr[right]) {
+                index++;
+            } else if (arr[index] < arr[right]) {
+                // 如果当前 index 的值小于基准元素，那么 index 和 ++less 对应位置上的元素进行交换
+                swap(arr, index++, ++less);
+            } else {
+                swap(arr, index, --more);
+            }
+        }
+        return new int[]{less + 1, more};
     }
 }
