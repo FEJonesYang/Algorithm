@@ -41,7 +41,7 @@ public class Solution45 {
         int maxPosition = 0;
         // 记录步数
         int steps = 0;
-        for (int i = 0; i < nums.length; i++) {
+        for (int i = 0; i < nums.length - 1; i++) {
             // 寻找能够跳的最大值
             maxPosition = Math.max(maxPosition, nums[i] + i);
             // 如果到达边界，则更新范围
