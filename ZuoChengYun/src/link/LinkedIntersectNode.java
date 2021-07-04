@@ -64,7 +64,7 @@ public class LinkedIntersectNode {
             n = Math.abs(n);
             while (n != 0){
                 n--;
-                cur2 = cur2.next;
+                cur1 = cur1.next;
             }
 
             while (cur1 != cur2){
