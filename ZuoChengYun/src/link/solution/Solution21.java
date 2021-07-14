@@ -3,7 +3,7 @@ package link.solution;
 /**
  * @Author: JonesYang
  * @Data: 2021-07-12
- * @Description:
+ * @Description: 合并有序的链表
  */
 public class Solution21 {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {

@@ -50,11 +50,6 @@ public class Solution24 {
         return newHead.next;
     }
 
-    public static void main(String[] args) {
-        ListNode head = Solution24.convertLink(new int[]{1, 2, 3, 4});
-        Solution24.swapPairs(head);
-    }
-
     //数组转成链表
     private static ListNode convertLink(int[] arr) {
         if (arr == null || arr.length == 0) {
