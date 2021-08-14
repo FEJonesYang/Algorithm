@@ -1,6 +1,7 @@
 package tree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -19,7 +20,7 @@ public class Solution95 {
 
 
     /**
-     * 回溯
+     * 递归
      *
      * @param n 选择输出的数字
      * @return
@@ -29,11 +30,32 @@ public class Solution95 {
         if (n <= 0) {
             return res;
         }
-        return dfs(1, n);
+        return generateTrees1(1, n);
     }
 
-    private List<TreeNode> dfs(int left, int right) {
-        return null;
+    private List<TreeNode> generateTrees1(int left, int right) {
+        List<TreeNode> allTrees = new LinkedList<>();
+        // 需要满足二叉搜索树，这个时候应该添加一个空节点
+        if (left > right) {
+            allTrees.add(null);
+            return allTrees;
+        }
+        for (int i = left; i <= right; i++) {
+            // 递归生成左右子数
+            List<TreeNode> leftTrees = generateTrees1(left, i - 1);
+            List<TreeNode> rightTrees = generateTrees1(i + 1, right);
+            // 枚举左右子树的组合生成合法的二叉搜索树
+            for (TreeNode leftNode : leftTrees) {
+                for (TreeNode rightNode : rightTrees) {
+                    TreeNode root = new TreeNode(i);
+                    root.left = leftNode;
+                    root.right = rightNode;
+                    // 装入所有的根结点
+                    allTrees.add(root);
+                }
+            }
+        }
+        return allTrees;
     }
 
     static class TreeNode {
